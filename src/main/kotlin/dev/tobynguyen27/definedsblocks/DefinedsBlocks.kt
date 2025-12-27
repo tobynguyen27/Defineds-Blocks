@@ -1,37 +1,34 @@
 package dev.tobynguyen27.definedsblocks
 
 import com.tterrag.registrate.Registrate
-import dev.tobynguyen27.definedsblocks.mods.ae2.AE2Mod
-import dev.tobynguyen27.definedsblocks.mods.botania.BotaniaBlocks
-import dev.tobynguyen27.definedsblocks.mods.core.CoreBlocks
-import dev.tobynguyen27.definedsblocks.mods.core.CoreMod
-import dev.tobynguyen27.definedsblocks.utils.Identifier
+import dev.tobynguyen27.definedsblocks.registry.DBBlockEntities
+import dev.tobynguyen27.definedsblocks.registry.DBBlocks
+import dev.tobynguyen27.definedsblocks.registry.DBSounds
+import dev.tobynguyen27.definedsblocks.util.Identifier
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
+import net.minecraft.world.item.CreativeModeTab
 import org.slf4j.LoggerFactory
 
-class DefinedsBlocks : ModInitializer {
-    companion object {
-        val MOD_ID = "definedsblocks"
-        val MOD_NAME = "Defined's Blocks"
-        val LOGGER = LoggerFactory.getLogger(MOD_NAME)
+object DefinedsBlocks : ModInitializer {
 
-        val REGISTRATE = Registrate.create(MOD_ID)
+    const val MOD_ID = "definedsblocks"
+    const val MOD_NAME = "Defined's Blocks"
+    val LOGGER = LoggerFactory.getLogger(MOD_NAME)
 
-        val ITEM_GROUP =
-            FabricItemGroupBuilder.build(Identifier("general")) {
-                CoreBlocks.MOSSIER_STONE_BRICKS.get().asItem().defaultInstance
-            }
-    }
+    val REGISTRATE: Registrate = Registrate.create(MOD_ID)
+    val ITEM_GROUP: CreativeModeTab =
+        FabricItemGroupBuilder.build(Identifier("general")) {
+            DBBlocks.MIKU.get().asItem().defaultInstance
+        }
 
     override fun onInitialize() {
         REGISTRATE.creativeModeTab { ITEM_GROUP }
-        REGISTRATE.addRawLang("itemGroup.${MOD_ID}.general", "Defined's Blocks")
+        REGISTRATE.addRawLang("itemGroup.$MOD_ID.general", MOD_NAME)
 
-        CoreMod.init()
-        AE2Mod.init()
-        BotaniaBlocks.init()
-
+        DBSounds.register()
+        DBBlocks.register()
+        DBBlockEntities.register()
         REGISTRATE.register()
     }
 }

@@ -1,0 +1,11 @@
+{
+    "miku": {
+        "sounds": [
+            {
+                "type": "file",
+                "name": "definedsblocks:miku"
+            }
+        ],
+        "subtitle": "subtitle.definedsblocks.miku"
+    }
+}
