@@ -1,6 +1,7 @@
 package dev.tobynguyen27.definedsblocks
 
 import com.tterrag.registrate.Registrate
+import dev.tobynguyen27.definedsblocks.data.client.Texts
 import dev.tobynguyen27.definedsblocks.registry.DBBlockEntities
 import dev.tobynguyen27.definedsblocks.registry.DBBlocks
 import dev.tobynguyen27.definedsblocks.registry.DBSounds
@@ -26,6 +27,7 @@ object DefinedsBlocks : ModInitializer {
         REGISTRATE.creativeModeTab { ITEM_GROUP }
         REGISTRATE.addRawLang("itemGroup.$MOD_ID.general", MOD_NAME)
 
+        Texts.register()
         DBSounds.register()
         DBBlocks.register()
         DBBlockEntities.register()

@@ -1,5 +1,6 @@
 {
   "block.definedsblocks.hatsune_miku_plushie": "Hatsune Miku Plushie",
   "itemGroup.definedsblocks.general": "Defined's Blocks",
-  "subtitle.definedsblocks.miku": "Miku"
+  "subtitle.definedsblocks.miku": "Miku",
+  "text.peaceful_block": "Mobs cannot spawn on this block"
 }

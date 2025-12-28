@@ -2,15 +2,20 @@ package dev.tobynguyen27.definedsblocks.blocks.miku
 
 import dev.tobynguyen27.codebebelib.raytracer.VoxelShapeCache
 import dev.tobynguyen27.codebebelib.vec.Cuboid6
+import dev.tobynguyen27.definedsblocks.data.client.Texts
 import dev.tobynguyen27.definedsblocks.registry.DBBlockEntities
 import dev.tobynguyen27.definedsblocks.registry.DBSounds
+import net.minecraft.ChatFormatting
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.TranslatableComponent
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
@@ -121,5 +126,14 @@ class MikuBlock(properties: Properties) : BaseEntityBlock(properties) {
 
     override fun getRenderShape(state: BlockState): RenderShape {
         return RenderShape.INVISIBLE
+    }
+
+    override fun appendHoverText(
+        stack: ItemStack,
+        level: BlockGetter?,
+        tooltip: MutableList<Component>,
+        flag: TooltipFlag,
+    ) {
+        tooltip.add(TranslatableComponent(Texts.PEACEFUL_BLOCK).withStyle(ChatFormatting.GRAY))
     }
 }
