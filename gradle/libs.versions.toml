@@ -17,6 +17,8 @@ registrate = "MC1.18.2-1.1.11"
 jade="5.100.0"
 jadeaddons="2.2.0"
 lazydfu="0.1.2"
+chipped = "DqX2DfLO"
+ctm = "QUrujfLU"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -33,6 +35,8 @@ registrate = { module = "com.tterrag.registrate_fabric:Registrate", version.ref 
 jade = { module = "maven.modrinth:jade", version.ref = "jade" }
 jadeaddons = { module = "maven.modrinth:jade-addons-fabric", version.ref = "jadeaddons" }
 lazydfu = { module = "maven.modrinth:lazydfu", version.ref = "lazydfu" }
+chipped = { module = "maven.modrinth:chipped", version.ref = "chipped" }
+ctm = { module = "maven.modrinth:ctm-refabricated", version.ref = "ctm" }
 
 [plugins]
 loom = { id = "net.fabricmc.fabric-loom-remap", version.ref = "loom" }

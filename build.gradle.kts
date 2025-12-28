@@ -31,6 +31,7 @@ repositories {
             "https://maven.jamieswhiteshirt.com/libs-release",
             "https://server.bbkr.space/artifactory/libs-release",
             "https://maven.shedaniel.me/",
+            "https://maven.teamresourceful.com/repository/maven-public/",
             "https://jitpack.io",
             "https://api.modrinth.com/maven/",
         )
@@ -50,9 +51,10 @@ dependencies {
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
     modImplementation(libs.fabric.kotlin)
-
     modImplementation(libs.codebebelib) { exclude(group = "io.github.fabricators_of_create") }
     modImplementation(libs.sense)
+    modImplementation(libs.chipped)
+    modImplementation(libs.ctm)
 
     modImplementation(libs.portinglib)
     include(libs.portinglib)
