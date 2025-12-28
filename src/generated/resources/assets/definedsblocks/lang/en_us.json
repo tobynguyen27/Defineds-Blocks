@@ -1,5 +1,17 @@
 {
+  "block.definedsblocks.elf_glass": "Elf Glass",
+  "block.definedsblocks.elf_glass_pane": "Elf Glass Pane",
+  "block.definedsblocks.flowery_mossier_stone_bricks": "Flowery Mossier Stone Bricks",
+  "block.definedsblocks.flowery_mossy_coarse_dirt": "Flowery Mossy Coarse Dirt",
+  "block.definedsblocks.flowery_mossy_deepslate_bricks": "Flowery Mossy Deepslate Bricks",
+  "block.definedsblocks.flowery_mossy_deepslate_tiles": "Flowery Mossy Deepslate Tiles",
   "block.definedsblocks.hatsune_miku_plushie": "Hatsune Miku Plushie",
+  "block.definedsblocks.mana_glass": "Mana Glass",
+  "block.definedsblocks.mana_glass_pane": "Mana Glass Pane",
+  "block.definedsblocks.mossier_stone_bricks": "Mossier Stone Bricks",
+  "block.definedsblocks.mossy_coarse_dirt": "Mossy Coarse Dirt",
+  "block.definedsblocks.mossy_deepslate_bricks": "Mossy Deepslate Bricks",
+  "block.definedsblocks.mossy_deepslate_tiles": "Mossy Deepslate Tiles",
   "itemGroup.definedsblocks.general": "Defined's Blocks",
   "subtitle.definedsblocks.miku": "Miku",
   "text.peaceful_block": "Mobs cannot spawn on this block"

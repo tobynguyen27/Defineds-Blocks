@@ -7,10 +7,9 @@ import net.minecraft.network.chat.TranslatableComponent
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.level.BlockGetter
-import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.GlassBlock
 
-class DBBlock(properties: BlockBehaviour.Properties) : Block(properties) {
+class PeacefulGlassBlock(properties: Properties) : GlassBlock(properties) {
 
     override fun appendHoverText(
         stack: ItemStack,

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "definedsblocks:elf_glass",
+    "definedsblocks:elf_glass_pane",
+    "definedsblocks:mana_glass",
+    "definedsblocks:mana_glass_pane"
+  ]
+}
