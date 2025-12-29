@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "definedsblocks:yellow_pastel"
+    }
+  },
+  "result": {
+    "item": "definedsblocks:yellow_pastel_stairs",
+    "count": 4
+  }
+}

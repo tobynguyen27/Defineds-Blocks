@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "definedsblocks:blue_pastel"
+    }
+  },
+  "result": {
+    "item": "definedsblocks:blue_pastel_slab",
+    "count": 6
+  }
+}

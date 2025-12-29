@@ -46,9 +46,9 @@ object BlockRegistry {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .simpleItem()
             .recipe { ctx, prov ->
-                prov.stonecutting(
+                prov.stairs(
                     DataIngredient.stacks(baseBlock.get().asItem().defaultInstance),
-                    { ctx.get() },
+                    { ctx.get() }, null, true
                 )
             }
     }
@@ -76,11 +76,8 @@ object BlockRegistry {
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .simpleItem()
             .recipe { ctx, prov ->
-                prov.stonecutting(
-                    DataIngredient.stacks(baseBlock.get().asItem().defaultInstance),
-                    { ctx.get() },
-                    2,
-                )
+                prov.slab(DataIngredient.stacks(baseBlock.get().asItem().defaultInstance),
+                    { ctx.get() }, null, true)
             }
     }
 

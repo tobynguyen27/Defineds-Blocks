@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "definedsblocks:red_pastel"
+    }
+  },
+  "result": {
+    "item": "definedsblocks:red_pastel_stairs",
+    "count": 4
+  }
+}

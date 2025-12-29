@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:purple_pastel_stairs"
+    ]
+  },
+  "criteria": {
+    "has_purple_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:purple_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:purple_pastel_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_purple_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

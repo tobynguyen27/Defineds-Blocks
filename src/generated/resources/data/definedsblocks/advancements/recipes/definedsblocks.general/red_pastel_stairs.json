@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:red_pastel_stairs"
+    ]
+  },
+  "criteria": {
+    "has_red_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:red_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:red_pastel_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_red_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}
