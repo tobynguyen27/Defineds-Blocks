@@ -1,6 +1,20 @@
 {
   "replace": false,
   "values": [
+    "definedsblocks:brown_pastel_wool",
+    "definedsblocks:red_pastel_wool",
+    "definedsblocks:purple_pastel_wool",
+    "definedsblocks:lime_pastel_wool",
+    "definedsblocks:black_pastel_wool",
+    "definedsblocks:blue_pastel_wool",
+    "definedsblocks:light_blue_pastel_wool",
+    "definedsblocks:white_pastel_wool",
+    "definedsblocks:yellow_pastel_wool",
+    "definedsblocks:magenta_pastel_wool",
+    "definedsblocks:gray_pastel_wool",
+    "definedsblocks:green_pastel_wool",
+    "definedsblocks:light_gray_pastel_wool",
+    "definedsblocks:orange_pastel_wool",
     "definedsblocks:hatsune_miku_plushie"
   ]
 }

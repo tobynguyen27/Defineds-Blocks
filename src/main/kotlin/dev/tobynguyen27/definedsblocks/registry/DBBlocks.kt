@@ -57,15 +57,25 @@ object DBBlocks {
                 "yellow_concrete" to "yellow_pastel",
             )
         pastels.forEach { (ingredient, name) ->
-            val baseBlock =
-                BlockRegistry.registerPastelLikeBlock(name, ::PeacefulBlock, ingredient).register()
-            BlockRegistry.registerSlabBlock("${name}_slab", ::PeacefulSlabBlock, name).register()
-            BlockRegistry.registerStairBlock(
-                    "${name}_stairs",
-                    { properties -> PeacefulStairBlock(baseBlock.defaultState, properties) },
-                    baseBlock,
-                )
-                .register()
+            with(BlockRegistry) {
+                val concreteBlock =
+                    registerPastelLikeBlock(name, ::PeacefulBlock, ingredient).register()
+                registerSlabBlock("${name}_slab", ::PeacefulSlabBlock, concreteBlock).register()
+                registerStairBlock(
+                        "${name}_stairs",
+                        { properties ->
+                            PeacefulStairBlock(concreteBlock.defaultState, properties)
+                        },
+                        concreteBlock,
+                    )
+                    .register()
+                registerWoolLikeBlock(
+                        ingredient.replace("concrete", "pastel_wool"),
+                        ::PeacefulBlock,
+                        ingredient.replace("concrete", "wool"),
+                    )
+                    .register()
+            }
         }
     }
 

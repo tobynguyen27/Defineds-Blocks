@@ -6,12 +6,10 @@ import com.tterrag.registrate.util.DataIngredient
 import com.tterrag.registrate.util.entry.BlockEntry
 import dev.tobynguyen27.definedsblocks.DefinedsBlocks.REGISTRATE
 import dev.tobynguyen27.definedsblocks.registry.DBTags
-import dev.tobynguyen27.definedsblocks.util.Identifier
 import dev.tobynguyen27.sense.util.FormattingUtils
 import java.util.function.Supplier
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.client.renderer.RenderType
-import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.BlockTags
@@ -58,7 +56,7 @@ object BlockRegistry {
     fun <T : SlabBlock> registerSlabBlock(
         name: String,
         factory: (BlockBehaviour.Properties) -> T,
-        ingredientBlock: String,
+        baseBlock: BlockEntry<out Block>,
     ): BlockBuilder<T, Registrate> {
         return REGISTRATE.block(name, factory)
             .lang(FormattingUtils.toEnglishName(name))
@@ -71,20 +69,42 @@ object BlockRegistry {
                     .isValidSpawn { _, _, _, _ -> false }
             }
             .blockstate { ctx, prov ->
-                val texture = prov.modLoc("block/$ingredientBlock")
+                val id = baseBlock.id.path
+                val texture = prov.modLoc("block/$id")
                 prov.slabBlock(ctx.entry, texture, texture)
             }
             .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
             .simpleItem()
             .recipe { ctx, prov ->
                 prov.stonecutting(
-                    DataIngredient.stacks(
-                        Registry.BLOCK.get(Identifier(ingredientBlock)).asItem().defaultInstance
-                    ),
+                    DataIngredient.stacks(baseBlock.get().asItem().defaultInstance),
                     { ctx.get() },
                     2,
                 )
             }
+    }
+
+    fun <T : Block> registerWoolLikeBlock(
+        name: String,
+        factory: (BlockBehaviour.Properties) -> T,
+        ingredientBlock: String,
+    ): BlockBuilder<T, Registrate> {
+        val id = ResourceLocation("chipped", ingredientBlock)
+
+        return REGISTRATE.block(name, factory)
+            .lang(FormattingUtils.toEnglishName(name))
+            .properties {
+                FabricBlockSettings.of(Material.WOOL)
+                    .sound(SoundType.WOOL)
+                    .strength(0.8f)
+                    .explosionResistance(0.8f)
+                    .requiresCorrectToolForDrops()
+                    .isValidSpawn { _, _, _, _ -> false }
+            }
+            .tag(BlockTags.WOOL, TagKey.create(ResourceKey.createRegistryKey(id), id))
+            .item()
+            .tag(TagKey.create(ResourceKey.createRegistryKey(id), id))
+            .build()
     }
 
     fun <T : Block> registerPastelLikeBlock(
