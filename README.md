@@ -10,6 +10,7 @@ A Minecraft mod adds decorative blocks from other popular mods without requiring
 - [Applied-Energistics-2](https://github.com/AppliedEnergistics/Applied-Energistics-2)
 - [Botania](https://github.com/VazkiiMods/Botania)
 - [NMT Space](https://github.com/JameH2/Hbm-s-Nuclear-Tech-GIT/tree/space-travel-twopointfive) for Hatsune Miku plushie model
+- [SofterPastels](https://github.com/devOS-Sanity-Edition/SofterPastels) for pastel textures
 
 ## License
 
