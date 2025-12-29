@@ -3,20 +3,117 @@ package dev.tobynguyen27.definedsblocks.registry.helper
 import com.tterrag.registrate.Registrate
 import com.tterrag.registrate.builders.BlockBuilder
 import com.tterrag.registrate.util.DataIngredient
+import com.tterrag.registrate.util.entry.BlockEntry
 import dev.tobynguyen27.definedsblocks.DefinedsBlocks.REGISTRATE
 import dev.tobynguyen27.definedsblocks.registry.DBTags
+import dev.tobynguyen27.definedsblocks.util.Identifier
 import dev.tobynguyen27.sense.util.FormattingUtils
 import java.util.function.Supplier
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.client.renderer.RenderType
+import net.minecraft.core.Registry
+import net.minecraft.resources.ResourceKey
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.BlockTags
+import net.minecraft.tags.TagKey
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Material
 
 object BlockRegistry {
+
+    fun <T : StairBlock> registerStairBlock(
+        name: String,
+        factory: (BlockBehaviour.Properties) -> T,
+        baseBlock: BlockEntry<out Block>,
+    ): BlockBuilder<T, Registrate> {
+        return REGISTRATE.block(name, factory)
+            .lang(FormattingUtils.toEnglishName(name))
+            .properties {
+                FabricBlockSettings.of(Material.STONE)
+                    .sound(SoundType.STONE)
+                    .strength(1.8f)
+                    .explosionResistance(1.8f)
+                    .requiresCorrectToolForDrops()
+                    .isValidSpawn { _, _, _, _ -> false }
+            }
+            .blockstate { ctx, prov ->
+                val texture = prov.modLoc("block/${baseBlock.id.path}")
+                prov.stairsBlock(ctx.entry, texture)
+            }
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+            .simpleItem()
+            .recipe { ctx, prov ->
+                prov.stonecutting(
+                    DataIngredient.stacks(baseBlock.get().asItem().defaultInstance),
+                    { ctx.get() },
+                )
+            }
+    }
+
+    fun <T : SlabBlock> registerSlabBlock(
+        name: String,
+        factory: (BlockBehaviour.Properties) -> T,
+        ingredientBlock: String,
+    ): BlockBuilder<T, Registrate> {
+        return REGISTRATE.block(name, factory)
+            .lang(FormattingUtils.toEnglishName(name))
+            .properties {
+                FabricBlockSettings.of(Material.STONE)
+                    .sound(SoundType.STONE)
+                    .strength(1.8f)
+                    .explosionResistance(1.8f)
+                    .requiresCorrectToolForDrops()
+                    .isValidSpawn { _, _, _, _ -> false }
+            }
+            .blockstate { ctx, prov ->
+                val texture = prov.modLoc("block/$ingredientBlock")
+                prov.slabBlock(ctx.entry, texture, texture)
+            }
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
+            .simpleItem()
+            .recipe { ctx, prov ->
+                prov.stonecutting(
+                    DataIngredient.stacks(
+                        Registry.BLOCK.get(Identifier(ingredientBlock)).asItem().defaultInstance
+                    ),
+                    { ctx.get() },
+                    2,
+                )
+            }
+    }
+
+    fun <T : Block> registerPastelLikeBlock(
+        name: String,
+        factory: (BlockBehaviour.Properties) -> T,
+        ingredientBlock: String,
+    ): BlockBuilder<T, Registrate> {
+        val id = ResourceLocation("chipped", ingredientBlock)
+
+        return REGISTRATE.block(name, factory)
+            .lang(FormattingUtils.toEnglishName(name))
+            .properties {
+                FabricBlockSettings.of(Material.STONE)
+                    .sound(SoundType.STONE)
+                    .strength(1.8f)
+                    .explosionResistance(1.8f)
+                    .requiresCorrectToolForDrops()
+                    .isValidSpawn { _, _, _, _ -> false }
+            }
+            .tag(
+                BlockTags.MINEABLE_WITH_PICKAXE,
+                BlockTags.NEEDS_STONE_TOOL,
+                TagKey.create(ResourceKey.createRegistryKey(id), id),
+            )
+            .item()
+            .tag(TagKey.create(ResourceKey.createRegistryKey(id), id))
+            .build()
+    }
+
     fun <T : Block> registerGlassLikeBlock(
         name: String,
         factory: (BlockBehaviour.Properties) -> T,
@@ -100,7 +197,11 @@ object BlockRegistry {
                     .requiresCorrectToolForDrops()
                     .isValidSpawn { _, _, _, _ -> false }
             }
-            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL, DBTags.BlockTag.Chipped.STONE)
+            .tag(
+                BlockTags.MINEABLE_WITH_PICKAXE,
+                BlockTags.NEEDS_STONE_TOOL,
+                DBTags.BlockTag.Chipped.STONE,
+            )
             .item()
             .tag(DBTags.ItemTag.Chipped.STONE)
             .build()

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:magenta_pastel_stairs_from_magenta_pastel_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_magenta_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:magenta_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:magenta_pastel_stairs_from_magenta_pastel_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_magenta_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

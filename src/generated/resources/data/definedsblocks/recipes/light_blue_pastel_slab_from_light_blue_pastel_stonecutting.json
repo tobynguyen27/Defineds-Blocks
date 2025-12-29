@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "definedsblocks:light_blue_pastel"
+  },
+  "result": "definedsblocks:light_blue_pastel_slab",
+  "count": 2
+}

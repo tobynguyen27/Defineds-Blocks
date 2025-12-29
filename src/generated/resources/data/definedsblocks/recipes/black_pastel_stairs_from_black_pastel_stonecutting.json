@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "definedsblocks:black_pastel"
+  },
+  "result": "definedsblocks:black_pastel_stairs",
+  "count": 1
+}

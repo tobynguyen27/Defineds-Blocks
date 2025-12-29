@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "definedsblocks:yellow_pastel"
+  },
+  "result": "definedsblocks:yellow_pastel_stairs",
+  "count": 1
+}

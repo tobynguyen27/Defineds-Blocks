@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:orange_pastel_stairs_from_orange_pastel_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_orange_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:orange_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:orange_pastel_stairs_from_orange_pastel_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_orange_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:yellow_pastel_slab_from_yellow_pastel_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_yellow_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:yellow_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:yellow_pastel_slab_from_yellow_pastel_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_yellow_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:brown_pastel_slab_from_brown_pastel_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_brown_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:brown_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:brown_pastel_slab_from_brown_pastel_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_brown_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

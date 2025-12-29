@@ -5,6 +5,8 @@ import com.tterrag.registrate.util.entry.BlockEntry
 import dev.tobynguyen27.definedsblocks.DefinedsBlocks
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulGlassBlock
+import dev.tobynguyen27.definedsblocks.blocks.PeacefulSlabBlock
+import dev.tobynguyen27.definedsblocks.blocks.PeacefulStairBlock
 import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlock
 import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlockEntity
 import dev.tobynguyen27.definedsblocks.registry.helper.BlockRegistry
@@ -34,6 +36,36 @@ object DBBlocks {
         val glasses = setOf("elf_glass", "mana_glass")
         glasses.forEach {
             BlockRegistry.registerGlassLikeBlock(it, ::PeacefulGlassBlock).register()
+        }
+
+        val pastels =
+            hashMapOf(
+                "black_concrete" to "black_pastel",
+                "blue_concrete" to "blue_pastel",
+                "brown_concrete" to "brown_pastel",
+                "gray_concrete" to "gray_pastel",
+                "green_concrete" to "green_pastel",
+                "light_blue_concrete" to "light_blue_pastel",
+                "light_gray_concrete" to "light_gray_pastel",
+                "lime_concrete" to "light_green_pastel",
+                "red_concrete" to "light_red_pastel",
+                "magenta_concrete" to "magenta_pastel",
+                "orange_concrete" to "orange_pastel",
+                "purple_concrete" to "purple_pastel",
+                "red_concrete" to "red_pastel",
+                "white_concrete" to "white_pastel",
+                "yellow_concrete" to "yellow_pastel",
+            )
+        pastels.forEach { (ingredient, name) ->
+            val baseBlock =
+                BlockRegistry.registerPastelLikeBlock(name, ::PeacefulBlock, ingredient).register()
+            BlockRegistry.registerSlabBlock("${name}_slab", ::PeacefulSlabBlock, name).register()
+            BlockRegistry.registerStairBlock(
+                    "${name}_stairs",
+                    { properties -> PeacefulStairBlock(baseBlock.defaultState, properties) },
+                    baseBlock,
+                )
+                .register()
         }
     }
 

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "definedsblocks:white_pastel_slab_from_white_pastel_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_white_pastel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "definedsblocks:white_pastel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "definedsblocks:white_pastel_slab_from_white_pastel_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_white_pastel",
+      "has_the_recipe"
+    ]
+  ]
+}

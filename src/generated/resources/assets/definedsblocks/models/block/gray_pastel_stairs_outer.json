@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "definedsblocks:block/gray_pastel",
+    "bottom": "definedsblocks:block/gray_pastel",
+    "top": "definedsblocks:block/gray_pastel"
+  }
+}

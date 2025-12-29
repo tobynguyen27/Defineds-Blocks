@@ -14,7 +14,6 @@ object DBTags {
             val DEEPSLATE: TagKey<Item> = create("deepslate")
             val GLASS: TagKey<Item> = create("glass")
 
-
             private fun create(path: String): TagKey<Item> {
                 return TagKey.create(
                     ResourceKey.createRegistryKey(ResourceLocation("chipped", path)),
@@ -29,7 +28,6 @@ object DBTags {
             val STONE: TagKey<Block> = create("stone")
             val DEEPSLATE: TagKey<Block> = create("deepslate")
             val GLASS: TagKey<Block> = create("glass")
-
 
             private fun create(path: String): TagKey<Block> {
                 return TagKey.create(
