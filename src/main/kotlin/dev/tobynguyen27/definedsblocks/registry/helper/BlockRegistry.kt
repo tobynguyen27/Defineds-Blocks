@@ -2,13 +2,16 @@ package dev.tobynguyen27.definedsblocks.registry.helper
 
 import com.tterrag.registrate.Registrate
 import com.tterrag.registrate.builders.BlockBuilder
+import com.tterrag.registrate.util.DataIngredient
 import dev.tobynguyen27.definedsblocks.DefinedsBlocks.REGISTRATE
+import dev.tobynguyen27.definedsblocks.registry.DBTags
 import dev.tobynguyen27.sense.util.FormattingUtils
 import java.util.function.Supplier
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Material
@@ -29,9 +32,11 @@ object BlockRegistry {
                     .isValidSpawn { _, _, _, _ -> false }
                     .noOcclusion()
             }
-            .tag(BlockTags.IMPERMEABLE)
+            .tag(BlockTags.IMPERMEABLE, DBTags.BlockTag.Chipped.GLASS)
+            .item()
+            .tag(DBTags.ItemTag.Chipped.GLASS)
+            .build()
             .addLayer { Supplier { RenderType.translucent() } }
-            .simpleItem()
     }
 
     fun <T : Block> registerDeepslateLikeBlock(
@@ -48,8 +53,14 @@ object BlockRegistry {
                     .requiresCorrectToolForDrops()
                     .isValidSpawn { _, _, _, _ -> false }
             }
-            .tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.NEEDS_STONE_TOOL)
-            .simpleItem()
+            .tag(
+                BlockTags.MINEABLE_WITH_SHOVEL,
+                BlockTags.NEEDS_STONE_TOOL,
+                DBTags.BlockTag.Chipped.DEEPSLATE,
+            )
+            .item()
+            .tag(DBTags.ItemTag.Chipped.DEEPSLATE)
+            .build()
     }
 
     fun <T : Block> registerDirtLikeBlock(
@@ -68,6 +79,11 @@ object BlockRegistry {
             }
             .tag(BlockTags.MINEABLE_WITH_SHOVEL, BlockTags.NEEDS_STONE_TOOL)
             .simpleItem()
+            .recipe { ctx, prov ->
+                prov.stonecutting(DataIngredient.stacks(Blocks.DIRT.asItem().defaultInstance)) {
+                    ctx.get()
+                }
+            }
     }
 
     fun <T : Block> registerStoneLikeBlock(
@@ -84,8 +100,10 @@ object BlockRegistry {
                     .requiresCorrectToolForDrops()
                     .isValidSpawn { _, _, _, _ -> false }
             }
-            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
-            .simpleItem()
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL, DBTags.BlockTag.Chipped.STONE)
+            .item()
+            .tag(DBTags.ItemTag.Chipped.STONE)
+            .build()
     }
 
     fun <T : Block> registerPlushieBlock(

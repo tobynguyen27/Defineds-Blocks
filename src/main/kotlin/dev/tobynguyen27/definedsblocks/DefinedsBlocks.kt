@@ -5,6 +5,7 @@ import dev.tobynguyen27.definedsblocks.data.client.Texts
 import dev.tobynguyen27.definedsblocks.registry.DBBlockEntities
 import dev.tobynguyen27.definedsblocks.registry.DBBlocks
 import dev.tobynguyen27.definedsblocks.registry.DBSounds
+import dev.tobynguyen27.definedsblocks.registry.DBTags
 import dev.tobynguyen27.definedsblocks.util.Identifier
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -27,8 +28,10 @@ object DefinedsBlocks : ModInitializer {
         REGISTRATE.creativeModeTab { ITEM_GROUP }
         REGISTRATE.addRawLang("itemGroup.$MOD_ID.general", MOD_NAME)
 
-        Texts.register()
+        DBTags.register()
         DBSounds.register()
+
+        Texts.register()
         DBBlocks.register()
         DBBlockEntities.register()
         REGISTRATE.register()
