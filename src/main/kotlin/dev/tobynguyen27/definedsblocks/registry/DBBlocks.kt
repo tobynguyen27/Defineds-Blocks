@@ -3,6 +3,7 @@ package dev.tobynguyen27.definedsblocks.registry
 import com.tterrag.registrate.providers.RegistrateRecipeProvider.has
 import com.tterrag.registrate.util.entry.BlockEntry
 import dev.tobynguyen27.definedsblocks.DefinedsBlocks
+import dev.tobynguyen27.definedsblocks.blocks.FuturaBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulGlassBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulSlabBlock
@@ -10,8 +11,15 @@ import dev.tobynguyen27.definedsblocks.blocks.PeacefulStairBlock
 import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlock
 import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlockEntity
 import dev.tobynguyen27.definedsblocks.registry.helper.BlockRegistry
+import dev.tobynguyen27.definedsblocks.util.Identifier
+import dev.tobynguyen27.sense.util.FormattingUtils
+import java.util.function.Supplier
+import net.minecraft.client.renderer.RenderType
 import net.minecraft.data.recipes.ShapedRecipeBuilder
+import net.minecraft.tags.BlockTags
 import net.minecraft.world.item.Items
+import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.material.Material
 
 object DBBlocks {
 
@@ -96,6 +104,82 @@ object DBBlocks {
                     .unlockedBy("has_wool", has(Items.WHITE_WOOL))
                     .save(prov)
             }
+            .register()
+
+    val FUTURA_BLOCK =
+        DefinedsBlocks.REGISTRATE.block(FuturaBlock.ID, ::FuturaBlock)
+            .properties { p -> p.requiresCorrectToolForDrops().strength(1.5f, 6.0f) }
+            .initialProperties(Material.STONE)
+            .lang(FormattingUtils.toEnglishName(FuturaBlock.ID))
+            .blockstate { ctx, prov ->
+                prov
+                    .getVariantBuilder(ctx.get())
+                    .partialState()
+                    .with(FuturaBlock.FUTURA_BLOCK_TYPE, FuturaBlock.FuturaBlockType.block)
+                    .modelForState()
+                    .modelFile(
+                        prov
+                            .models()
+                            .getExistingFile(Identifier("block/futura_block/futura_block_online"))
+                    )
+                    .addModel()
+                    .partialState()
+                    .with(FuturaBlock.FUTURA_BLOCK_TYPE, FuturaBlock.FuturaBlockType.column_x)
+                    .modelForState()
+                    .modelFile(
+                        prov
+                            .models()
+                            .getExistingFile(
+                                Identifier("block/futura_block/futura_block_column_online")
+                            )
+                    )
+                    .rotationX(90)
+                    .rotationY(90)
+                    .addModel()
+                    .partialState()
+                    .with(FuturaBlock.FUTURA_BLOCK_TYPE, FuturaBlock.FuturaBlockType.column_y)
+                    .modelForState()
+                    .modelFile(
+                        prov
+                            .models()
+                            .getExistingFile(
+                                Identifier("block/futura_block/futura_block_column_online")
+                            )
+                    )
+                    .addModel()
+                    .partialState()
+                    .with(FuturaBlock.FUTURA_BLOCK_TYPE, FuturaBlock.FuturaBlockType.column_z)
+                    .modelForState()
+                    .modelFile(
+                        prov
+                            .models()
+                            .getExistingFile(
+                                Identifier("block/futura_block/futura_block_column_online")
+                            )
+                    )
+                    .rotationX(90)
+                    .addModel()
+            }
+            .item()
+            .model { ctx, prov ->
+                prov.withExistingParent(
+                    ctx.name,
+                    Identifier("block/futura_block/futura_block_online"),
+                )
+            }
+            .build()
+            .recipe { ctx, prov ->
+                ShapedRecipeBuilder.shaped(ctx.get(), 8)
+                    .pattern("XXX")
+                    .pattern("XYX")
+                    .pattern("XXX")
+                    .define("X".toCharArray()[0], Blocks.STONE)
+                    .define("Y".toCharArray()[0], Items.REDSTONE)
+                    .unlockedBy("has_redstone", has(Items.REDSTONE))
+                    .save(prov)
+            }
+            .tag(BlockTags.NEEDS_STONE_TOOL, BlockTags.MINEABLE_WITH_PICKAXE)
+            .addLayer { Supplier { RenderType.translucent() } }
             .register()
 
     fun register() {

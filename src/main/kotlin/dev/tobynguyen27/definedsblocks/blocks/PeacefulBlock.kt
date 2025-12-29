@@ -10,7 +10,7 @@ import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockBehaviour
 
-class PeacefulBlock(properties: BlockBehaviour.Properties) : Block(properties) {
+open class PeacefulBlock(properties: BlockBehaviour.Properties) : Block(properties) {
 
     override fun appendHoverText(
         stack: ItemStack,
