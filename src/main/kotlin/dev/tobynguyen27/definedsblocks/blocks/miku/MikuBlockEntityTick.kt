@@ -35,5 +35,7 @@ object MikuBlockEntityTick {
                 level.sendBlockUpdated(blockPos, blockState, blockState, 3)
             }
         }
+
+        blockEntity.syncTick()
     }
 }

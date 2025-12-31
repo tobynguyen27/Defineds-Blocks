@@ -1,5 +1,8 @@
 package dev.tobynguyen27.definedsblocks.blocks.miku
 
+import dev.tobynguyen27.sense.sync.annotation.Synced
+import dev.tobynguyen27.sense.sync.blockentity.AutoSyncBlockEntity
+import dev.tobynguyen27.sense.sync.container.ManagedFieldContainer
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.Packet
@@ -13,37 +16,16 @@ class MikuBlockEntity(
     type: BlockEntityType<MikuBlockEntity>,
     blockPos: BlockPos,
     blockState: BlockState,
-) : BlockEntity(type, blockPos, blockState) {
+) : BlockEntity(type, blockPos, blockState), AutoSyncBlockEntity {
 
-    var isClicked: Boolean = false
-    var cooldown: Int = 0
+    private val managedFieldContainer by lazy { ManagedFieldContainer(this) }
 
-    var squishTicks: Int = 0
-    var prevSquishTicks: Int = 0
+    @Synced var isClicked: Boolean = false
+    @Synced var cooldown: Int = 0
+    @Synced var squishTicks: Int = 0
+    @Synced var prevSquishTicks: Int = 0
 
-    override fun getUpdateTag(): CompoundTag {
-        return saveWithoutMetadata()
-    }
+    override fun getSelf(): BlockEntity = this
 
-    override fun getUpdatePacket(): Packet<ClientGamePacketListener> {
-        return ClientboundBlockEntityDataPacket.create(this)
-    }
-
-    override fun saveAdditional(tag: CompoundTag) {
-        tag.putBoolean("isClicked", isClicked)
-        tag.putInt("cooldown", cooldown)
-        tag.putInt("squishTicks", squishTicks)
-        tag.putInt("prevSquishTicks", prevSquishTicks)
-
-        super.saveAdditional(tag)
-    }
-
-    override fun load(tag: CompoundTag) {
-        isClicked = tag.getBoolean("isClicked")
-        cooldown = tag.getInt("cooldown")
-        squishTicks = tag.getInt("squishTicks")
-        prevSquishTicks = tag.getInt("prevSquishTicks")
-
-        super.load(tag)
-    }
+    override fun getFieldContainer(): ManagedFieldContainer = managedFieldContainer
 }
