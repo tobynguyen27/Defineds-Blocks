@@ -14,14 +14,11 @@ class MikuBlockEntity(
     blockState: BlockState,
 ) : BlockEntity(type, blockPos, blockState), AutoSyncBlockEntity {
 
-    private val managedFieldContainer by lazy { ManagedFieldContainer(this) }
-
     @Synced var isClicked: Boolean = false
     @Synced var cooldown: Int = 0
     @Synced var squishTicks: Int = 0
     @Synced var prevSquishTicks: Int = 0
 
-    override fun getSelf(): BlockEntity = this
-
-    override fun getFieldContainer(): ManagedFieldContainer = managedFieldContainer
+    override val self: BlockEntity = this
+    override val fieldContainer: ManagedFieldContainer by lazy { ManagedFieldContainer(this) }
 }

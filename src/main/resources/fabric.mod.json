@@ -41,7 +41,7 @@
         "java": ">=17",
         "fabric-api": "*",
         "fabric-language-kotlin": "*",
-        "sense": ">=1.0.0",
+        "sense": ">=1.0.1",
         "chipped": "*"
     }
 }
