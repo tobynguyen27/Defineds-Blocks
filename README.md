@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/astral-community/Defineds-Blocks@main/assets/logo.png" />
+<img src="https://cdn.jsdelivr.net/gh/tobynguyen27/Defineds-Blocks@main/assets/logo.png" />
 
 [![GitHub](https://img.shields.io/static/v1?label=&message=github&color=e6e9ef&labelColor=8aadf4&style=for-the-badge&logo=github&logoColor=eff1f5)](https://github.com/tobynguyen27/Defineds-Blocks)
 [![CurseForge](https://img.shields.io/static/v1?label=&message=curseforge&color=e6e9ef&labelColor=8aadf4&style=for-the-badge&logo=curseforge&logoColor=eff1f5)](https://curseforge.com/minecraft/mc-mods/defineds-blocks)
@@ -31,5 +31,5 @@ A Minecraft mod adds decorative blocks from other popular mods without requiring
 
 ## License
 
-Released under the [MIT](https://github.com/astral-community/Defineds-Blocks/blob/main/LICENSE) license.
+Released under the [MIT](https://github.com/tobynguyen27/Defineds-Blocks/blob/main/LICENSE) license.
 
