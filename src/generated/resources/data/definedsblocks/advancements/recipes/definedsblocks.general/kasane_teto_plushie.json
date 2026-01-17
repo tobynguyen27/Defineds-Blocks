@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "definedsblocks:hatsune_miku_plushie"
+      "definedsblocks:kasane_teto_plushie"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "definedsblocks:hatsune_miku_plushie"
+        "recipe": "definedsblocks:kasane_teto_plushie"
       }
     }
   },

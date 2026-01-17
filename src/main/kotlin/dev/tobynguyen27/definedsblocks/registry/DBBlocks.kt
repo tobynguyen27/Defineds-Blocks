@@ -90,7 +90,7 @@ object DBBlocks {
     }
 
     val MIKU: BlockEntry<MikuBlock> =
-        BlockRegistry.registerPlushieBlock("miku", ::MikuBlock)
+        BlockRegistry.registerPlushieBlock("hastune_miku_plushie", ::MikuBlock)
             .blockEntity { type, blockPos, blockState ->
                 PlushieBlockEntity(type, blockPos, blockState)
             }
@@ -109,7 +109,7 @@ object DBBlocks {
             .register()
 
     val TETO: BlockEntry<TetoBlock> =
-        BlockRegistry.registerPlushieBlock("teto", ::TetoBlock)
+        BlockRegistry.registerPlushieBlock("kasane_teto_plushie", ::TetoBlock)
             .blockEntity { type, blockPos, blockState ->
                 PlushieBlockEntity(type, blockPos, blockState)
             }
@@ -128,7 +128,7 @@ object DBBlocks {
             .register()
 
     val NERU: BlockEntry<NeruBlock> =
-        BlockRegistry.registerPlushieBlock("neru", ::NeruBlock)
+        BlockRegistry.registerPlushieBlock("akita_neru_plushie", ::NeruBlock)
             .blockEntity { type, blockPos, blockState ->
                 PlushieBlockEntity(type, blockPos, blockState)
             }

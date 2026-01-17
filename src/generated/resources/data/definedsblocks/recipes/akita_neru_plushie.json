@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "BCB",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:white_wool"
+    },
+    "C": {
+      "item": "minecraft:light_gray_wool"
+    },
+    "A": {
+      "item": "minecraft:yellow_wool"
+    }
+  },
+  "result": {
+    "item": "definedsblocks:akita_neru_plushie"
+  }
+}

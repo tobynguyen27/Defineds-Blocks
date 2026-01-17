@@ -246,7 +246,8 @@ object BlockRegistry {
             }
             .tag(BlockTags.WOOL)
             .item()
-            .defaultModel()
+            .model { ctx, prov -> prov.withExistingParent(ctx.name, prov.modLoc("item/plushie")) }
             .build()
+            .blockstate { ctx, provider -> {} }
     }
 }

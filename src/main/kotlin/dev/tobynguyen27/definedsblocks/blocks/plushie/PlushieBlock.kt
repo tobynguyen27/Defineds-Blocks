@@ -28,7 +28,7 @@ abstract class PlushieBlock(properties: Properties) : BaseEntityBlock(properties
     companion object {
         val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
 
-        private val SHAPE = Cuboid6(0.25, 0.0, 0.25, 0.75, 0.8, 0.75)
+        private val SHAPE = Cuboid6(0.25, 0.0, 0.25, 0.75, 0.6, 0.75)
     }
 
     init {
