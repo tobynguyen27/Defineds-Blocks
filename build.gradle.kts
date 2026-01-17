@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.loom)
     alias(libs.plugins.kotlin)
@@ -138,6 +141,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 
     withSourcesJar()
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
 }
 
 tasks.named<Jar>("jar") {
