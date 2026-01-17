@@ -1,4 +1,4 @@
-package dev.tobynguyen27.definedsblocks.blocks.miku
+package dev.tobynguyen27.definedsblocks.blocks.plushie.teto
 
 import com.mojang.blaze3d.vertex.PoseStack
 import dev.tobynguyen27.codebebelib.render.CCModel
@@ -6,6 +6,7 @@ import dev.tobynguyen27.codebebelib.render.CCRenderState
 import dev.tobynguyen27.codebebelib.render.model.OBJParser
 import dev.tobynguyen27.codebebelib.vec.Matrix4
 import dev.tobynguyen27.codebebelib.vec.Vector3
+import dev.tobynguyen27.definedsblocks.blocks.plushie.PlushieBlockEntity
 import dev.tobynguyen27.definedsblocks.util.Identifier
 import kotlin.math.sin
 import net.minecraft.client.renderer.LevelRenderer
@@ -16,19 +17,19 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.renderer.texture.OverlayTexture
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 
-class MikuBlockEntityRenderer(ctx: BlockEntityRendererProvider.Context) :
-    BlockEntityRenderer<MikuBlockEntity> {
+class TetoBlockEntityRenderer(ctx: BlockEntityRendererProvider.Context) :
+    BlockEntityRenderer<PlushieBlockEntity> {
 
     companion object {
-        private val TEXTURE = Identifier("textures/obj/miku.png")
-        private val SQUISHED_TEXTURE = Identifier("textures/obj/miku_squished.png")
+        private val TEXTURE = Identifier("textures/obj/teto.png")
+        private val SQUISHED_TEXTURE = Identifier("textures/obj/teto_squished.png")
     }
 
-    private val obj = OBJParser(Identifier("models/obj/miku.obj")).quads().ignoreMtl().parse()
+    private val obj = OBJParser(Identifier("models/obj/teto.obj")).quads().ignoreMtl().parse()
     private val model = CCModel.combine(obj.values).backfacedCopy()
 
     override fun render(
-        blockEntity: MikuBlockEntity,
+        blockEntity: PlushieBlockEntity,
         partialTick: Float,
         poseStack: PoseStack,
         bufferSource: MultiBufferSource,

@@ -1,4 +1,4 @@
-package dev.tobynguyen27.definedsblocks.blocks.miku
+package dev.tobynguyen27.definedsblocks.blocks.plushie
 
 import dev.tobynguyen27.sense.sync.annotation.Synced
 import dev.tobynguyen27.sense.sync.blockentity.AutoSyncBlockEntity
@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 
-class MikuBlockEntity(
-    type: BlockEntityType<MikuBlockEntity>,
+class PlushieBlockEntity(
+    type: BlockEntityType<out PlushieBlockEntity>,
     blockPos: BlockPos,
     blockState: BlockState,
 ) : BlockEntity(type, blockPos, blockState), AutoSyncBlockEntity {

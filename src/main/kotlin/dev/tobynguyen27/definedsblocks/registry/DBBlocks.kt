@@ -8,8 +8,10 @@ import dev.tobynguyen27.definedsblocks.blocks.PeacefulBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulGlassBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulSlabBlock
 import dev.tobynguyen27.definedsblocks.blocks.PeacefulStairBlock
-import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlock
-import dev.tobynguyen27.definedsblocks.blocks.miku.MikuBlockEntity
+import dev.tobynguyen27.definedsblocks.blocks.plushie.PlushieBlockEntity
+import dev.tobynguyen27.definedsblocks.blocks.plushie.miku.MikuBlock
+import dev.tobynguyen27.definedsblocks.blocks.plushie.neru.NeruBlock
+import dev.tobynguyen27.definedsblocks.blocks.plushie.teto.TetoBlock
 import dev.tobynguyen27.definedsblocks.registry.helper.BlockRegistry
 import dev.tobynguyen27.definedsblocks.util.Identifier
 import dev.tobynguyen27.sense.util.FormattingUtils
@@ -88,9 +90,9 @@ object DBBlocks {
     }
 
     val MIKU: BlockEntry<MikuBlock> =
-        BlockRegistry.registerPlushieBlock(MikuBlock.ID, ::MikuBlock)
+        BlockRegistry.registerPlushieBlock("miku", ::MikuBlock)
             .blockEntity { type, blockPos, blockState ->
-                MikuBlockEntity(type, blockPos, blockState)
+                PlushieBlockEntity(type, blockPos, blockState)
             }
             .build()
             .recipe { ctx, prov ->
@@ -101,6 +103,44 @@ object DBBlocks {
                     .define("B".toCharArray()[0], Items.WHITE_WOOL)
                     .define("C".toCharArray()[0], Items.LIGHT_GRAY_WOOL)
                     .define("A".toCharArray()[0], Items.LIGHT_BLUE_WOOL)
+                    .unlockedBy("has_wool", has(Items.WHITE_WOOL))
+                    .save(prov)
+            }
+            .register()
+
+    val TETO: BlockEntry<TetoBlock> =
+        BlockRegistry.registerPlushieBlock("teto", ::TetoBlock)
+            .blockEntity { type, blockPos, blockState ->
+                PlushieBlockEntity(type, blockPos, blockState)
+            }
+            .build()
+            .recipe { ctx, prov ->
+                ShapedRecipeBuilder.shaped(ctx.entry)
+                    .pattern(" A ")
+                    .pattern("BCB")
+                    .pattern(" B ")
+                    .define("B".toCharArray()[0], Items.WHITE_WOOL)
+                    .define("C".toCharArray()[0], Items.LIGHT_GRAY_WOOL)
+                    .define("A".toCharArray()[0], Items.RED_WOOL)
+                    .unlockedBy("has_wool", has(Items.WHITE_WOOL))
+                    .save(prov)
+            }
+            .register()
+
+    val NERU: BlockEntry<NeruBlock> =
+        BlockRegistry.registerPlushieBlock("neru", ::NeruBlock)
+            .blockEntity { type, blockPos, blockState ->
+                PlushieBlockEntity(type, blockPos, blockState)
+            }
+            .build()
+            .recipe { ctx, prov ->
+                ShapedRecipeBuilder.shaped(ctx.entry)
+                    .pattern(" A ")
+                    .pattern("BCB")
+                    .pattern(" B ")
+                    .define("B".toCharArray()[0], Items.WHITE_WOOL)
+                    .define("C".toCharArray()[0], Items.LIGHT_GRAY_WOOL)
+                    .define("A".toCharArray()[0], Items.YELLOW_WOOL)
                     .unlockedBy("has_wool", has(Items.WHITE_WOOL))
                     .save(prov)
             }
