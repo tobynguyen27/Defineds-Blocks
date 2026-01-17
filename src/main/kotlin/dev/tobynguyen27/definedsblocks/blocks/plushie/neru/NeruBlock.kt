@@ -38,7 +38,7 @@ class NeruBlock(properties: Properties) : PlushieBlock(properties) {
             level.playSound(
                 null,
                 pos,
-                DBSounds.MIKU,
+                DBSounds.NERU,
                 net.minecraft.sounds.SoundSource.BLOCKS,
                 1.0f,
                 1.0f,

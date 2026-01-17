@@ -7,5 +7,23 @@
             }
         ],
         "subtitle": "subtitle.definedsblocks.miku"
+    },
+    "teto": {
+        "sounds": [
+            {
+                "type": "file",
+                "name": "definedsblocks:teto"
+            }
+        ],
+        "subtitle": "subtitle.definedsblocks.teto"
+    },
+    "neru": {
+        "sounds": [
+            {
+                "type": "file",
+                "name": "definedsblocks:neru"
+            }
+        ],
+        "subtitle": "subtitle.definedsblocks.neru"
     }
 }

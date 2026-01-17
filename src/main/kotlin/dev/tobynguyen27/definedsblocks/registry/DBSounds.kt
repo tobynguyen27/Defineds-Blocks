@@ -10,6 +10,8 @@ import net.minecraft.sounds.SoundEvent
 object DBSounds {
 
     val MIKU = registerSound("miku")
+    val TETO = registerSound("teto")
+    val NERU = registerSound("neru")
 
     private fun registerSound(name: String): SoundEvent {
         val id = Identifier(name)

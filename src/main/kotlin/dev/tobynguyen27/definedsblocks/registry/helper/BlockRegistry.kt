@@ -248,6 +248,15 @@ object BlockRegistry {
             .item()
             .model { ctx, prov -> prov.withExistingParent(ctx.name, prov.modLoc("item/plushie")) }
             .build()
-            .blockstate { ctx, provider -> {} }
+            .blockstate { ctx, prov ->
+                prov.simpleBlock(
+                    ctx.getEntry(),
+                    prov
+                        .models()
+                        .getBuilder(ctx.name)
+                        .parent(prov.models().getExistingFile(prov.mcLoc("block/block")))
+                        .texture("particle", prov.mcLoc("block/white_wool")),
+                )
+            }
     }
 }
